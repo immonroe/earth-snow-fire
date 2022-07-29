@@ -8,11 +8,25 @@
 // Tip: use the console to make sure this is returning the
 //  expected output before moving to the next step!
 
-// Found article on Math.random via MDN through stackoverflow
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+// Found answer using an array
+// https://stackoverflow.com/questions/5915096/get-a-random-item-from-a-javascript-array
 
 function getComputerChoice(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
+    const choice = ['rock', 'paper', 'scissors'];
+    return choice[Math.floor(Math.random() * choice.length)];
 }
 
-let computerResponse = getComputerChoice(1, 3);
+
+
+
+// Write a function that plays a single round of Rock Paper 
+// Scissors. The function should take two parameters - the 
+// playerSelection and computerSelection - and then return a
+//  string that declares the winner of the round like so: 
+//  "You Lose! Paper beats Rock"
+
+
+
+// Make your function’s playerSelection parameter case-insensitive 
+// (so users can input rock, ROCK, RocK or any other variation).
+
