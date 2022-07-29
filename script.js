@@ -8,13 +8,17 @@
 // Tip: use the console to make sure this is returning the
 //  expected output before moving to the next step!
 
-// Found answer using an array
+// Found a solution using an array
 // https://stackoverflow.com/questions/5915096/get-a-random-item-from-a-javascript-array
 
-// function getComputerChoice() {
-//     const choice = ['rock', 'paper', 'scissors'];
-//     return choice[Math.floor(Math.random() * choice.length)];
-// }
+// Earth extinguishes fire (rock beats scissors)
+// Snow covers earth (paper beats rock)
+// Fire melts snow (scissors beats paper)
+
+function getComputerChoice() {
+    const choice = ['earth', 'snow', 'fire'];
+    return choice[Math.floor(Math.random() * choice.length)];
+}
 
 
 // Write a function that plays a single round of Rock Paper 
