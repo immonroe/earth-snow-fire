@@ -12,11 +12,12 @@
 // // https://stackoverflow.com/questions/5915096/get-a-random-item-from-a-javascript-array
 
 // // Earth extinguishes fire (rock beats scissors)
-// // Snow covers earth (paper beats rock)
 // // Fire melts snow (scissors beats paper)
+// // Snow covers earth (paper beats rock)
+
 
 function getComputerChoice() {
-    const choice = ['Earth', 'Snow', 'Fire'];
+    const choice = ['earth', 'snow', 'fire'];
     return choice[Math.floor(Math.random() * choice.length)];
 }
 
@@ -32,14 +33,15 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         return `Nothing like a good ole' stalement, seems you and your opponent are evenly matched...`;
-    } else if (playerSelection === 'Earth' && computerSelection === 'Fire' || playerSelection === 'Snow' && computerSelection=== 'Earth' ||playerSelection === 'Scissors' &&computerSelection === 'Snow') {
-        return `You lose!`;
+    } else if (playerSelection === 'earth' && computerSelection === 'fire' || playerSelection === 'snow' && computerSelection=== 'earth' ||playerSelection === 'scissors' &&computerSelection === 'snow') {
+        return `You lose! But it's okay it's a good learning opportunity. Try again!`;
     }
     else {
         return 'YOU WIN!!!!! (I knew you could do it all along... I did not doubt you for one second...';
     }
   }
 
-  const playerSelection = 'Earth';
+
+  const playerSelection = 'Earth'.toLowerCase();
   const computerSelection = getComputerChoice();
   console.log(playRound(playerSelection, computerSelection));
