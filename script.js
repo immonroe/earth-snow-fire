@@ -1,20 +1,23 @@
 // Test a console.log to verify that js successfully linked
 // console.log('Hello World!')
 
-// // Your game is going to play against the computer, 
-// // so begin with a function called getComputerChoice that 
-// // will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’
+// Your game is going to play against the computer, 
+// so begin with a function called getComputerChoice that 
+// will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’
 
-// // Tip: use the console to make sure this is returning the
-// //  expected output before moving to the next step!
+// Tip: use the console to make sure this is returning the
+//  expected output before moving to the next step!
 
-// // Found a solution using an array and using the Math.random method to pick random object in the array
-// // https://stackoverflow.com/questions/5915096/get-a-random-item-from-a-javascript-array
+// Found a solution using an array and using the Math.random method to pick random object in the array
+// https://stackoverflow.com/questions/5915096/get-a-random-item-from-a-javascript-array
+// https://stackoverflow.com/questions/28737679/rock-paper-scissor-javascript-using-arrays-beginner
 
-// // Earth extinguishes fire (rock beats scissors)
-// // Fire melts snow (scissors beats paper)
-// // Snow covers earth (paper beats rock)
+// Earth extinguishes fire (rock beats scissors)
+// Fire melts snow (scissors beats paper)
+// Snow covers earth (paper beats rock)
 
+let playerScore = 0;
+let computerScore = 0;
 
 function getComputerChoice() {
     const choice = ['earth', 'snow', 'fire'];
@@ -34,14 +37,24 @@ function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         return `Nothing like a good ole' stalement, seems you and your opponent are evenly matched...`;
     } else if (playerSelection === 'earth' && computerSelection === 'fire' || playerSelection === 'snow' && computerSelection=== 'earth' ||playerSelection === 'scissors' &&computerSelection === 'snow') {
+        computerScore++;
         return `You lose! But it's okay it's a good learning opportunity. Try again!`;
     }
     else {
+        playerScore++;
         return 'YOU WIN!!!!! (I knew you could do it all along... I did not doubt you for one second...';
     }
   }
 
-
   const playerSelection = 'Earth'.toLowerCase();
   const computerSelection = getComputerChoice();
   console.log(playRound(playerSelection, computerSelection));
+
+// //   Write a NEW function called game(). Call the playRound function inside of this one to play a 5 round
+// //   game that keeps score and reports a winner or loser at the end.
+
+function game() {
+    for (let i = 0; i < 5; i++) {
+
+        }
+    }
