@@ -30,12 +30,14 @@ function getComputerChoice() {
 // You’re going to use what you return later on, so let’s test this function by using console.log to see the results:
 
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection === computerSelection)
+    if (playerSelection === computerSelection) {
         return `Nothing like a good ole' stalement, seems you and your opponent are evenly matched...`;
-    else if (playerSelection === 'Earth' && computerSelection === 'Fire' || playerSelection === 'Snow' && computerSelection=== 'Earth' ||playerSelection === 'Scissors' &&computerSelection === 'Snow')
+    } else if (playerSelection === 'Earth' && computerSelection === 'Fire' || playerSelection === 'Snow' && computerSelection=== 'Earth' ||playerSelection === 'Scissors' &&computerSelection === 'Snow') {
         return `You lose!`;
-    else
+    }
+    else {
         return 'YOU WIN!!!!! (I knew you could do it all along... I did not doubt you for one second...';
+    }
   }
 
   const playerSelection = 'Earth';
