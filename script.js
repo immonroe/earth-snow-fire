@@ -18,6 +18,7 @@
 
 let playerScore = 0;
 let computerScore = 0;
+let draws = 0;
 
 function getComputerChoice() {
     const choice = ['earth', 'snow', 'fire'];
