@@ -52,7 +52,7 @@ let playerWinRound = 'Player has won the round!'
 let computerWinRound = 'CPU has won the round!'
 let draw = 'Draw!'
 let playerWin = 'Congrats, you have won the game!'
-let computerWin = 'Computer wins the game! Congratulations!'
+let computerWin = 'The CPU has won the game!'
 
 //   const playerSelection = 'earth'.toLowerCase();
 //   const computerSelection = getComputerChoice();
@@ -70,9 +70,30 @@ for (let i = 0; i < 99; i++) {
     console.log('Your score is ' + playerScore);
     console.log('The CPU score is ' + computerScore);
   
+    // Game ends when either player or CPU wins 5 rounds total
     if (playerScore === 5 || computerScore === 5) {
       break;
     }
   }
 
+  // A funciton that keeps track of the score in the game
+function gameScore(result) {
   
+    if (result === playerWinRound) {
+      playerScore++;
+    } else if (result === draw) {
+      draws++;
+    } else {
+      computerScore++;
+    }
+  
+  
+    if (playerScore === 5) {
+      console.log(playerWin);
+      return;
+    }
+    if (computerScore === 5) {
+      console.log(computerWin);
+      return;
+    }
+  }
