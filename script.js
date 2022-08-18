@@ -16,10 +16,12 @@
 // Fire melts snow (scissors beats paper)
 // Snow covers earth (paper beats rock)
 
+// Add tally variables to game to keep score
 let playerScore = 0;
 let computerScore = 0;
 let draws = 0;
 
+// Add computer choice options
 function getComputerChoice() {
     const choice = ['earth', 'snow', 'fire'];
     return choice[Math.floor(Math.random() * choice.length)];
@@ -36,16 +38,21 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        return `Nothing like a good ole' stalement, seems you and your opponent are evenly matched...`;
+        return draw;
     } else if (playerSelection === 'earth' && computerSelection === 'fire' || playerSelection === 'snow' && computerSelection=== 'earth' ||playerSelection === 'scissors' &&computerSelection === 'snow') {
-        computerScore++;
-        return `You lose! But it's okay it's a good learning opportunity. Try again!`;
+        return playerWinRound;
     }
     else {
-        playerScore++;
-        return 'YOU WIN!!!!! (I knew you could do it all along... I did not doubt you for one second...';
+        return computerWinRound;
     }
   }
+
+//Create messages for in-game win/loss/draw
+let playerWinRound = 'Player has won the round!'
+let computerWinRound = 'CPU has won the round!'
+let draw = 'Draw!'
+let playerWin = 'Congrats, you have won the game!'
+let computerWin = 'Computer wins the game! Congratulations!'
 
   const playerSelection = 'Earth'.toLowerCase();
   const computerSelection = getComputerChoice();
