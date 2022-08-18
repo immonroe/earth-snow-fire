@@ -7,5 +7,5 @@ This is the first JavaScript project that I will be completing while working thr
 - Understanding how to use functions/return statements
 - Using arrays and selecting random elements from within them
 - Using conditionals (if else statement)
-- Using for loops so that the game can last 5 rounds
+- Using for loops so that the game can last until either user or CPU wins 5 rounds total
 - Utilizing the console in Chrome to check my code
