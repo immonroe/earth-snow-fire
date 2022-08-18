@@ -54,15 +54,25 @@ let draw = 'Draw!'
 let playerWin = 'Congrats, you have won the game!'
 let computerWin = 'Computer wins the game! Congratulations!'
 
-  const playerSelection = 'Earth'.toLowerCase();
-  const computerSelection = getComputerChoice();
-  console.log(playRound(playerSelection, computerSelection));
+//   const playerSelection = 'earth'.toLowerCase();
+//   const computerSelection = getComputerChoice();
+//   console.log(playRound(playerSelection, computerSelection));
 
 // //   Write a NEW function called game(). Call the playRound function inside of this one to play a 5 round
 // //   game that keeps score and reports a winner or loser at the end.
 
-function game() {
-    for (let i = 0; i < 5; i++) {
-
-        }
+for (let i = 0; i < 99; i++) {
+    let playerChoice = prompt('Which will you choose? earth, fire, or snow?').toLowerCase();
+    const computerSelection = getComputerChoice();
+    let roundResult = playRound(playerChoice, computerSelection);
+    console.log(roundResult);
+    gameScore(roundResult);
+    console.log('Your score is ' + playerScore);
+    console.log('The CPU score is ' + computerScore);
+  
+    if (playerScore === 5 || computerScore === 5) {
+      break;
     }
+  }
+
+  
