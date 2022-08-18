@@ -22,12 +22,6 @@ function getComputerChoice() {
 // Write a function that plays a single round of Rock Paper Scissors. The function should take two parameters
 // the playerSelection and computerSelection - and then return a string that declares the winner of the round like so: 
 // "You Lose! x beats y"
-
-// Make your function’s playerSelection parameter case-insensitive (so users can input rock, ROCK, RocK or any other variation).
-
-// Important note: you want to return the results of this function call, not console.log() them.
-// You’re going to use what you return later on, so let’s test this function by using console.log to see the results:
-
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         return draw;
@@ -41,7 +35,7 @@ function playRound(playerSelection, computerSelection) {
     }
   }
 
-//Create messages for in-game win/loss/draw
+//Create messages for in-game win/loss/draw/error
 let playerWinRound = 'Player has won the round!'
 let computerWinRound = 'CPU has won the round!'
 let draw = 'Draw!'
@@ -49,12 +43,7 @@ let playerWin = 'Congrats, you have won the game!'
 let computerWin = 'The CPU has won the game!'
 let userError = 'Sorry, you did not select one of the three options. Try again.'
 
-//   const playerSelection = 'earth'.toLowerCase();
-//   const computerSelection = getComputerChoice();
-//   console.log(playRound(playerSelection, computerSelection));
-
 // Using a for loop to play multiple rounds of the game, the game will also console.log() the score after each round
-
 for (let i = 0; i < 99; i++) {
     let playerChoice = prompt('Which will you choose? earth, fire, or snow?').toLowerCase();
     const computerSelection = getComputerChoice();
@@ -71,6 +60,7 @@ for (let i = 0; i < 99; i++) {
   }
 
   // A function that keeps track of the score in the game
+  // Also announces winner of game when either user or CPU wins 5 rounds total
 function gameScore(result) {
   
     if (result === playerWinRound) {
