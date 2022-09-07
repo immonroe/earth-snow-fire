@@ -7,8 +7,8 @@ let draws = 0;
 let playerWinRound = 'Player has won the round!'
 let computerWinRound = 'CPU has won the round!'
 let draw = `It's a draw!`
-let playerWin = 'Congrats, you have won the game!'
-let computerWin = 'The CPU has won the game!'
+let playerWin = `Congrats, you have won the game! The final score is ${playerScore} - ${computerScore}.`
+let computerWin = `The CPU has won the game! The final score is ${computerScore} - ${playerScore}.`
 let userError = 'Sorry, you did not select one of the three options. Try again.'
 
 const rockButton = document.querySelector('.rock')
@@ -28,45 +28,59 @@ function getComputerChoice() {
 // the playerSelection and computerSelection - and then return a string that declares the winner of the round like so: 
 // "You Lose! x beats y"
 function playRound(playerSelection, computerSelection) {
-  console.log('1 ', playerSelection, '2 ', computerSelection)
-    if (playerSelection === computerSelection) {
-      const p = document.createElement('p')
-      p.innerText = draw;
-      outcomeDiv.appendChild(p)
-    } else if (playerSelection === 'rock' && computerSelection === 'scissors' || playerSelection === 'paper' && computerSelection=== 'rock' ||playerSelection === 'scissors' &&computerSelection === 'paper') {
-      const p = document.createElement('p')  
-      p.innerText = playerWinRound;
-      outcomeDiv.appendChild(p)
-    }
-    else if (playerSelection === 'scissors' && computerSelection === 'rock' || playerSelection === 'rock' && computerSelection=== 'paper' ||playerSelection === 'paper' &&computerSelection === 'scissors') {
-      const p = document.createElement('p')
-      p.innerText = computerWinRound;
-      outcomeDiv.appendChild(p)
-    } else {
-      const p = document.createElement('p')
-      p.innerText = userError;
-      outcomeDiv.appendChild(p)
-    }
-  }
 
-  
+  if (playerSelection === computerSelection) {
+    const p = document.createElement('p')
+    p.innerText = draw;
+    outcomeDiv.appendChild(p)
+  } else if (playerSelection === 'rock' && computerSelection === 'scissors' || playerSelection === 'paper' && computerSelection=== 'rock' ||playerSelection === 'scissors' &&computerSelection === 'paper') {
+    const p = document.createElement('p')  
+    p.innerText = playerWinRound;
+    outcomeDiv.appendChild(p)
+  }
+  else if (playerSelection === 'scissors' && computerSelection === 'rock' || playerSelection === 'rock' && computerSelection=== 'paper' ||playerSelection === 'paper' &&computerSelection === 'scissors') {
+    const p = document.createElement('p')
+    p.innerText = computerWinRound;
+    outcomeDiv.appendChild(p)
+  } else {
+    const p = document.createElement('p')
+    p.innerText = userError;
+    outcomeDiv.appendChild(p)
+  }
+}
+
+const checkForWinner = (playerScore, computerScore) => {
+  if (playerScore === 5) {
+    const h2 = document.createElement('h2')
+    h2.classList.add('player-won')
+    h2.innerText = playerWin;
+  } 
+  if (computerScore === 5) {
+    const h2 = document.createElement('h2')
+    h2.classList.add('computer-won')
+    h2.innerText = computerWin;
+  }
+}
 
 rockButton.addEventListener('click', () => {
   const computerSelection = getComputerChoice()
   const playerSelection = 'rock'
   playRound(playerSelection, computerSelection)
+  checkForWinner(playerScore, computerScore)
 })
 
 paperButton.addEventListener('click', () => {
   const computerSelection = getComputerChoice()
   const playerSelection = 'paper'
   playRound(playerSelection, computerSelection)
+  checkForWinner(playerScore, computerScore)
 })
 
 scissorsButton.addEventListener('click', () => {
   const computerSelection = getComputerChoice()
   const playerSelection = 'scissors'
   playRound(playerSelection, computerSelection)
+  checkForWinner(playerScore, computerScore)
 })
 
 // // Using a for loop to play multiple rounds of the game, the game will also console.log() the score after each round
