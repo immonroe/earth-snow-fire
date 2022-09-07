@@ -15,7 +15,7 @@ let draws = 0;
 // so begin with a function called getComputerChoice that 
 // will randomly return either one of your options
 function getComputerChoice() {
-    const choice = ['earth', 'snow', 'fire'];
+    const choice = ['rock', 'paper', 'scissors'];
     return choice[Math.floor(Math.random() * choice.length)];
 }
 
@@ -25,10 +25,10 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         return draw;
-    } else if (playerSelection === 'earth' && computerSelection === 'fire' || playerSelection === 'snow' && computerSelection=== 'earth' ||playerSelection === 'fire' &&computerSelection === 'snow') {
+    } else if (playerSelection === 'rock' && computerSelection === 'scissors' || playerSelection === 'paper' && computerSelection=== 'rock' ||playerSelection === 'scissors' &&computerSelection === 'paper') {
         return playerWinRound;
     }
-    else if (playerSelection === 'fire' && computerSelection === 'earth' || playerSelection === 'earth' && computerSelection=== 'snow' ||playerSelection === 'snow' &&computerSelection === 'fire') {
+    else if (playerSelection === 'scissors' && computerSelection === 'rock' || playerSelection === 'rock' && computerSelection=== 'paper' ||playerSelection === 'paper' &&computerSelection === 'scissors') {
         return computerWinRound;
     } else {
         return userError;
@@ -52,7 +52,7 @@ for (let i = 0; i < 99; i++) {
     gameScore(roundResult);
     console.log('Your score is ' + playerScore);
     console.log('The CPU score is ' + computerScore);
-    
+
   // remove logic to play exactly 5 rounds
     // Game ends when either player or CPU wins 5 rounds total
   //   if (playerScore === 5 || computerScore === 5) {
