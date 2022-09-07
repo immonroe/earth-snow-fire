@@ -30,15 +30,18 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
 
   if (playerSelection === computerSelection) {
+    draws++;
     const p = document.createElement('p')
     p.innerText = draw;
     outcomeDiv.appendChild(p)
   } else if (playerSelection === 'rock' && computerSelection === 'scissors' || playerSelection === 'paper' && computerSelection=== 'rock' ||playerSelection === 'scissors' &&computerSelection === 'paper') {
+    playerScore++
     const p = document.createElement('p')  
     p.innerText = playerWinRound;
     outcomeDiv.appendChild(p)
   }
   else if (playerSelection === 'scissors' && computerSelection === 'rock' || playerSelection === 'rock' && computerSelection=== 'paper' ||playerSelection === 'paper' &&computerSelection === 'scissors') {
+    computerScore++;
     const p = document.createElement('p')
     p.innerText = computerWinRound;
     outcomeDiv.appendChild(p)
@@ -50,6 +53,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 const checkForWinner = (playerScore, computerScore) => {
+  console.log(playerScore, computerScore)
   if (playerScore === 5) {
     const h2 = document.createElement('h2')
     h2.classList.add('player-won')
