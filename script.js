@@ -10,6 +10,9 @@
 let playerScore = 0;
 let computerScore = 0;
 let draws = 0;
+const rockButton = document.querySelector('#rock')
+const paperButton = document.querySelector('#paper')
+const scissorsButton = document.querySelector('#scissors')
 
 // Your game is going to play against the computer, 
 // so begin with a function called getComputerChoice that 
@@ -44,7 +47,7 @@ let computerWin = 'The CPU has won the game!'
 let userError = 'Sorry, you did not select one of the three options. Try again.'
 
 // Using a for loop to play multiple rounds of the game, the game will also console.log() the score after each round
-for (let i = 0; i < 99; i++) {
+for (let i = 0; i < 999; i++) {
     let playerChoice = prompt('Which will you choose? Rock, paper, or scissors?').toLowerCase();
     const computerSelection = getComputerChoice();
     let roundResult = playRound(playerChoice, computerSelection);
@@ -53,12 +56,11 @@ for (let i = 0; i < 99; i++) {
     console.log('Your score is ' + playerScore);
     console.log('The CPU score is ' + computerScore);
 
-  // remove logic to play exactly 5 rounds
     // Game ends when either player or CPU wins 5 rounds total
-  //   if (playerScore === 5 || computerScore === 5) {
-  //     break;
-  //   }
-  }
+    // if (playerScore === 5 || computerScore === 5) {
+      // break;
+    }
+  // }
 
   // A function that keeps track of the score in the game
   // Also announces winner of game when either user or CPU wins 5 rounds total
