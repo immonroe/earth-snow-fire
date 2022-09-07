@@ -2,9 +2,9 @@
 // https://stackoverflow.com/questions/5915096/get-a-random-item-from-a-javascript-array
 // https://stackoverflow.com/questions/28737679/rock-paper-scissor-javascript-using-arrays-beginner
 
-// Earth extinguishes fire (rock beats scissors)
-// Fire melts snow (scissors beats paper)
-// Snow covers earth (paper beats rock)
+// (rock beats scissors)
+// (scissors beats paper)
+// (paper beats rock)
 
 // Add a way to keep track of score throughout the game
 let playerScore = 0;
@@ -45,7 +45,7 @@ let userError = 'Sorry, you did not select one of the three options. Try again.'
 
 // Using a for loop to play multiple rounds of the game, the game will also console.log() the score after each round
 for (let i = 0; i < 99; i++) {
-    let playerChoice = prompt('Which will you choose? earth, fire, or snow?').toLowerCase();
+    let playerChoice = prompt('Which will you choose? Rock, paper, or scissors?').toLowerCase();
     const computerSelection = getComputerChoice();
     let roundResult = playRound(playerChoice, computerSelection);
     console.log(roundResult);
