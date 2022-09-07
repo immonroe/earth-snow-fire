@@ -7,8 +7,8 @@ let draws = 0;
 let playerWinRound = 'Player has won the round!'
 let computerWinRound = 'CPU has won the round!'
 let draw = `It's a draw!`
-let playerWin = `Congrats, you have won the game! The final score is ${playerScore} - ${computerScore}.`
-let computerWin = `The CPU has won the game! The final score is ${computerScore} - ${playerScore}.`
+let playerWin = 'Congrats, you have won the game!'
+let computerWin = 'The CPU has won the game!'
 let userError = 'Sorry, you did not select one of the three options. Try again.'
 
 const rockButton = document.querySelector('.rock')
@@ -58,11 +58,14 @@ const checkForWinner = (playerScore, computerScore) => {
     const h2 = document.createElement('h2')
     h2.classList.add('player-won')
     h2.innerText = playerWin;
+    outcomeDiv.append(h2) // winner message appears after scoring 5 points
   } 
   if (computerScore === 5) {
     const h2 = document.createElement('h2')
     h2.classList.add('computer-won')
     h2.innerText = computerWin;
+    outcomeDiv.append(h2) // losing message appears after cpu scores 5 points
+
   }
 }
 
