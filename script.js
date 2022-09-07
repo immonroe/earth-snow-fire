@@ -15,6 +15,8 @@ const rockButton = document.querySelector('.rock')
 const paperButton = document.querySelector('.paper')
 const scissorsButton = document.querySelector('.scissors')
 const outcomeDiv = document.querySelector('.outcome')
+const playerScoreSpan = document.querySelector('.player-score')
+const computerScoreSpan = document.querySelector('.computer-score')
 
 // Your game is going to play against the computer, 
 // so begin with a function called getComputerChoice that 
@@ -69,10 +71,16 @@ const checkForWinner = (playerScore, computerScore) => {
   }
 }
 
+const updateScores = (playerScore, computerScore) => {
+  playerScoreSpan.innerText = `Player Score: ${playerScore}`
+  computerScoreSpan.innerText = `Computer Score: ${computerScore}`
+}
+
 rockButton.addEventListener('click', () => {
   const computerSelection = getComputerChoice()
   const playerSelection = 'rock'
   playRound(playerSelection, computerSelection)
+  updateScores(playerScore, computerScore)
   checkForWinner(playerScore, computerScore)
 })
 
@@ -80,6 +88,7 @@ paperButton.addEventListener('click', () => {
   const computerSelection = getComputerChoice()
   const playerSelection = 'paper'
   playRound(playerSelection, computerSelection)
+  updateScores(playerScore, computerScore)
   checkForWinner(playerScore, computerScore)
 })
 
@@ -87,6 +96,7 @@ scissorsButton.addEventListener('click', () => {
   const computerSelection = getComputerChoice()
   const playerSelection = 'scissors'
   playRound(playerSelection, computerSelection)
+  updateScores(playerScore, computerScore)
   checkForWinner(playerScore, computerScore)
 })
 
