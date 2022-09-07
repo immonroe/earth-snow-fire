@@ -52,11 +52,12 @@ for (let i = 0; i < 99; i++) {
     gameScore(roundResult);
     console.log('Your score is ' + playerScore);
     console.log('The CPU score is ' + computerScore);
-  
+    
+  // remove logic to play exactly 5 rounds
     // Game ends when either player or CPU wins 5 rounds total
-    if (playerScore === 5 || computerScore === 5) {
-      break;
-    }
+  //   if (playerScore === 5 || computerScore === 5) {
+  //     break;
+  //   }
   }
 
   // A function that keeps track of the score in the game
@@ -73,13 +74,13 @@ function gameScore(result) {
       return userError;
 
   
-  
-    if (playerScore === 5) {
-      console.log(playerWin);
-      return;
-    }
-    if (computerScore === 5) {
-      console.log(computerWin);
-      return;
-    }
+  // remove logic to play exactly 5 rounds
+    // if (playerScore === 5) {
+    //   console.log(playerWin);
+    //   return;
+    // }
+    // if (computerScore === 5) {
+    //   console.log(computerWin);
+    //   return;
+    // }
   }
