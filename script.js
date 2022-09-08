@@ -1,9 +1,7 @@
-// Add a way to keep track of score throughout the game
 let playerScore = 0;
 let computerScore = 0;
 let draws = 0;
 
-//Create messages for in-game win/loss/draw/error
 let playerWinRound = 'Player has won the round!'
 let computerWinRound = 'CPU has won the round!'
 let draw = `It's a draw!`
@@ -18,57 +16,43 @@ const outcomeDiv = document.querySelector('.outcome')
 const playerScoreSpan = document.querySelector('.player-score')
 const computerScoreSpan = document.querySelector('.computer-score')
 
-// Your game is going to play against the computer, 
-// so begin with a function called getComputerChoice that 
-// will randomly return either one of your options
 function getComputerChoice() {
     const choice = ['rock', 'paper', 'scissors'];
     return choice[Math.floor(Math.random() * choice.length)];
 }
 
-// Write a function that plays a single round of Rock Paper Scissors. The function should take two parameters
-// the playerSelection and computerSelection - and then return a string that declares the winner of the round like so: 
-// "You Lose! x beats y"
 function playRound(playerSelection, computerSelection) {
-
+  const p = document.createElement('p')
   if (playerSelection === computerSelection) {
     draws++;
-    const p = document.createElement('p')
     p.innerText = draw;
-    outcomeDiv.appendChild(p)
   } else if (playerSelection === 'rock' && computerSelection === 'scissors' || playerSelection === 'paper' && computerSelection=== 'rock' ||playerSelection === 'scissors' &&computerSelection === 'paper') {
     playerScore++
-    const p = document.createElement('p')  
     p.innerText = playerWinRound;
-    outcomeDiv.appendChild(p)
   }
   else if (playerSelection === 'scissors' && computerSelection === 'rock' || playerSelection === 'rock' && computerSelection=== 'paper' ||playerSelection === 'paper' &&computerSelection === 'scissors') {
     computerScore++;
-    const p = document.createElement('p')
     p.innerText = computerWinRound;
-    outcomeDiv.appendChild(p)
   } else {
-    const p = document.createElement('p')
-    p.innerText = userError;
-    outcomeDiv.appendChild(p)
+     p.innerText = userError;
   }
+  outcomeDiv.appendChild(p)
+
 }
 
 const checkForWinner = (playerScore, computerScore) => {
+  const h2 = document.createElement('h2')
   console.log(playerScore, computerScore)
   if (playerScore === 5) {
-    const h2 = document.createElement('h2')
     h2.classList.add('player-won')
     h2.innerText = playerWin;
-    outcomeDiv.append(h2) // winner message appears after scoring 5 points
   } 
   if (computerScore === 5) {
-    const h2 = document.createElement('h2')
     h2.classList.add('computer-won')
     h2.innerText = computerWin;
-    outcomeDiv.append(h2) // losing message appears after cpu scores 5 points
-
   }
+  outcomeDiv.append(h2) // winner/loser message appears after scoring 5 points
+
 }
 
 const updateScores = (playerScore, computerScore) => {
