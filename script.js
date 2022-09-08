@@ -15,6 +15,7 @@ const scissorsButton = document.querySelector('.scissors')
 const outcomeDiv = document.querySelector('.outcome')
 const playerScoreSpan = document.querySelector('.player-score')
 const computerScoreSpan = document.querySelector('.computer-score')
+const buttons = document.querySelectorAll('button')
 
 function getComputerChoice() {
     const choice = ['rock', 'paper', 'scissors'];
@@ -37,7 +38,6 @@ function playRound(playerSelection, computerSelection) {
      p.innerText = userError;
   }
   outcomeDiv.appendChild(p)
-
 }
 
 const checkForWinner = (playerScore, computerScore) => {
@@ -52,7 +52,6 @@ const checkForWinner = (playerScore, computerScore) => {
     h2.innerText = computerWin;
   }
   outcomeDiv.append(h2) // winner/loser message appears after scoring 5 points
-
 }
 
 const updateScores = (playerScore, computerScore) => {
@@ -60,28 +59,40 @@ const updateScores = (playerScore, computerScore) => {
   computerScoreSpan.innerText = `Computer Score: ${computerScore}`
 }
 
-rockButton.addEventListener('click', () => {
-  const computerSelection = getComputerChoice()
-  const playerSelection = 'rock'
-  playRound(playerSelection, computerSelection)
-  updateScores(playerScore, computerScore)
-  checkForWinner(playerScore, computerScore)
-})
+// longer version for each individual button
+// rockButton.addEventListener('click', () => {
+//   const computerSelection = getComputerChoice()
+//   const playerSelection = 'rock'
+//   playRound(playerSelection, computerSelection)
+//   updateScores(playerScore, computerScore)
+//   checkForWinner(playerScore, computerScore)
+// })
 
-paperButton.addEventListener('click', () => {
-  const computerSelection = getComputerChoice()
-  const playerSelection = 'paper'
-  playRound(playerSelection, computerSelection)
-  updateScores(playerScore, computerScore)
-  checkForWinner(playerScore, computerScore)
-})
+// paperButton.addEventListener('click', () => {
+//   const computerSelection = getComputerChoice()
+//   const playerSelection = 'paper'
+//   playRound(playerSelection, computerSelection)
+//   updateScores(playerScore, computerScore)
+//   checkForWinner(playerScore, computerScore)
+// })
 
-scissorsButton.addEventListener('click', () => {
+// scissorsButton.addEventListener('click', () => {
+//   const computerSelection = getComputerChoice()
+//   const playerSelection = 'scissors'
+//   playRound(playerSelection, computerSelection)
+//   updateScores(playerScore, computerScore)
+//   checkForWinner(playerScore, computerScore)
+// })
+
+// Alternate version to condense code
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
   const computerSelection = getComputerChoice()
-  const playerSelection = 'scissors'
+  const playerSelection = `${button.className}`
   playRound(playerSelection, computerSelection)
   updateScores(playerScore, computerScore)
   checkForWinner(playerScore, computerScore)
+  })
 })
 
 // // Using a for loop to play multiple rounds of the game, the game will also console.log() the score after each round
