@@ -1,5 +1,7 @@
 # rock-paper-scissors
 
+<a href="https://immonroe.github.io/rock/paper/scissors">LIVE PREVIEW</a>
+
 This is the first JavaScript project that I will be completing while working through The Odin Project's cirriculum. In this project I will be utilizing the following skills:
 
 - Planning and 'whiteboarding' to get an idea of what the entire project will consist of
