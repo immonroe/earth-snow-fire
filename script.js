@@ -1,3 +1,11 @@
+const rockButton = document.querySelector('.rock')
+const paperButton = document.querySelector('.paper')
+const scissorsButton = document.querySelector('.scissors')
+const outcomeDiv = document.querySelector('.outcome')
+const playerScoreSpan = document.querySelector('.player-score')
+const computerScoreSpan = document.querySelector('.computer-score')
+const buttons = document.querySelectorAll('button')
+
 let playerScore = 0;
 let computerScore = 0;
 let draws = 0;
@@ -9,13 +17,15 @@ let playerWin = 'Congrats, you have won the game!'
 let computerWin = 'The CPU has won the game!'
 let userError = 'Sorry, you did not select one of the three options. Try again.'
 
-const rockButton = document.querySelector('.rock')
-const paperButton = document.querySelector('.paper')
-const scissorsButton = document.querySelector('.scissors')
-const outcomeDiv = document.querySelector('.outcome')
-const playerScoreSpan = document.querySelector('.player-score')
-const computerScoreSpan = document.querySelector('.computer-score')
-const buttons = document.querySelectorAll('button')
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+  const computerSelection = getComputerChoice()
+  const playerSelection = `${button.className}`
+  playRound(playerSelection, computerSelection)
+  updateScores(playerScore, computerScore)
+  checkForWinner(playerScore, computerScore)
+  })
+})
 
 function getComputerChoice() {
     const choice = ['rock', 'paper', 'scissors'];
@@ -58,39 +68,3 @@ const updateScores = (playerScore, computerScore) => {
   playerScoreSpan.innerText = `Player Score: ${playerScore}`
   computerScoreSpan.innerText = `Computer Score: ${computerScore}`
 }
-
-// longer version for each individual button
-// rockButton.addEventListener('click', () => {
-//   const computerSelection = getComputerChoice()
-//   const playerSelection = 'rock'
-//   playRound(playerSelection, computerSelection)
-//   updateScores(playerScore, computerScore)
-//   checkForWinner(playerScore, computerScore)
-// })
-
-// paperButton.addEventListener('click', () => {
-//   const computerSelection = getComputerChoice()
-//   const playerSelection = 'paper'
-//   playRound(playerSelection, computerSelection)
-//   updateScores(playerScore, computerScore)
-//   checkForWinner(playerScore, computerScore)
-// })
-
-// scissorsButton.addEventListener('click', () => {
-//   const computerSelection = getComputerChoice()
-//   const playerSelection = 'scissors'
-//   playRound(playerSelection, computerSelection)
-//   updateScores(playerScore, computerScore)
-//   checkForWinner(playerScore, computerScore)
-// })
-
-// Alternate version to condense code
-buttons.forEach(button => {
-  button.addEventListener('click', () => {
-  const computerSelection = getComputerChoice()
-  const playerSelection = `${button.className}`
-  playRound(playerSelection, computerSelection)
-  updateScores(playerScore, computerScore)
-  checkForWinner(playerScore, computerScore)
-  })
-})
