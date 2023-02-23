@@ -1,70 +1,92 @@
-const rockButton = document.querySelector('.rock')
-const paperButton = document.querySelector('.paper')
-const scissorsButton = document.querySelector('.scissors')
-const outcomeDiv = document.querySelector('.outcome')
-const playerScoreSpan = document.querySelector('.player-score')
-const computerScoreSpan = document.querySelector('.computer-score')
-const buttons = document.querySelectorAll('button')
+let userScore = 0;
+let compScore = 0;
 
-let playerScore = 0;
-let computerScore = 0;
-let draws = 0;
+const userScore_span = document.getElementById("user-score");
+const compScore_span = document.getElementById("comp-score");
+// Get reference to scoreboard div 
+const scoreBoard_div = document.querySelector(".score-board");
+const result_p = document.querySelector(".result > p");
+const rock_div = document.getElementById("r");
+const paper_div = document.getElementById("p");
+const scissors_div = document.getElementById("s");
 
-let playerWinRound = 'Player has won the round!'
-let computerWinRound = 'CPU has won the round!'
-let draw = `It's a draw!`
-let playerWin = 'Congrats, you have won the game!'
-let computerWin = 'The CPU has won the game!'
-let userError = 'Sorry, you did not select one of the three options. Try again.'
-
-buttons.forEach(button => {
-  button.addEventListener('click', () => {
-  const computerSelection = getComputerChoice()
-  const playerSelection = `${button.className}`
-  playRound(playerSelection, computerSelection)
-  updateScores(playerScore, computerScore)
-  checkForWinner(playerScore, computerScore)
-  })
-})
-
-function getComputerChoice() {
-    const choice = ['rock', 'paper', 'scissors'];
-    return choice[Math.floor(Math.random() * choice.length)];
+//Gets random selection from computer 
+function getComputerSelection() {
+    const choices=['r','p','s'];
+    const result = Math.floor(Math.random()*3);
+    return choices[result]
+} 
+//Converts r,p,s to rock, paper, scissors for output on screen
+function convertToWord(letter) {
+    if (letter === 'r') return "Rock";
+    if (letter === 'p') return "Paper";
+    return "Scissors";
 }
 
-function playRound(playerSelection, computerSelection) {
-  const p = document.createElement('p')
-  if (playerSelection === computerSelection) {
-    draws++;
-    p.innerText = draw;
-  } else if (playerSelection === 'rock' && computerSelection === 'scissors' || playerSelection === 'paper' && computerSelection=== 'rock' ||playerSelection === 'scissors' &&computerSelection === 'paper') {
-    playerScore++
-    p.innerText = playerWinRound;
-  }
-  else if (playerSelection === 'scissors' && computerSelection === 'rock' || playerSelection === 'rock' && computerSelection=== 'paper' ||playerSelection === 'paper' &&computerSelection === 'scissors') {
-    computerScore++;
-    p.innerText = computerWinRound;
-  } else {
-     p.innerText = userError;
-  }
-  outcomeDiv.appendChild(p)
+function win(playerSelection, computerSelection) {
+    userScore++;
+    userScore_span.innerHTML = userScore;
+    compScore_span.innerHTML = compScore;
+
+    if (userScore < 5){result_p.innerHTML = `${convertToWord(playerSelection)} beats ${convertToWord(computerSelection)}. You win! =D`;
+}else if(userScore === 5){
+  result_p.innerHTML='Game over, you win! <button onclick="endGame()">Click here to play again</button>'
+
+  rock_div.setAttribute("disabled", 1);
+  paper_div.setAttribute("disabled", 1);
+  scissors_div.setAttribute("disabled", 1);
+}; 
 }
 
-const checkForWinner = (playerScore, computerScore) => {
-  const h2 = document.createElement('h2')
-  console.log(playerScore, computerScore)
-  if (playerScore === 5) {
-    h2.classList.add('player-won')
-    h2.innerText = playerWin;
-  } 
-  if (computerScore === 5) {
-    h2.classList.add('computer-won')
-    h2.innerText = computerWin;
-  }
-  outcomeDiv.append(h2) // winner/loser message appears after scoring 5 points
+function lose(playerSelection, computerSelection) {
+    compScore++;
+    userScore_span.innerHTML = userScore;
+    compScore_span.innerHTML = compScore;
+    
+    if (compScore<5){result_p.innerHTML = `${convertToWord(computerSelection)} beats ${convertToWord(playerSelection)}. You lose =(`;
+}else if(compScore === 5){
+  result_p.innerHTML='Game over, you lose! <button onclick="endGame()">Click here to play again</button>'
+  // rock_div.setAttribute("disabled", 1);
+  paper_div.setAttribute("disabled", 1);
+  scissors_div.setAttribute("disabled", 1);
+};
+
 }
 
-const updateScores = (playerScore, computerScore) => {
-  playerScoreSpan.innerText = `Player Score: ${playerScore}`
-  computerScoreSpan.innerText = `Computer Score: ${computerScore}`
+function draw() {
+    userScore_span.innerHTML = userScore;
+    compScore_span.innerHTML = compScore;
+    result_p.innerHTML = `It's a tie!`;
 }
+
+function game(playerSelection) {
+    const computerSelection = getComputerSelection();
+    if (playerSelection === computerSelection) {
+      draw(playerSelection, computerSelection);
+    } else if (playerSelection === 'r' && computerSelection === 's'){
+      win(playerSelection, computerSelection);  
+    }else if (playerSelection === 'p' && computerSelection === 'r'){
+      win(playerSelection, computerSelection);
+    }else if (playerSelection === 's' && computerSelection === 'p'){
+      win(playerSelection, computerSelection);
+    }else{
+      lose(playerSelection, computerSelection);
+    }   
+}
+
+function endGame() {
+  userScore = 0;
+  compScore = 0;
+  userScore_span.innerHTML = userScore;
+  compScore_span.innerHTML = compScore;
+  result_p.innerHTML = ``;
+  rock_div.removeAttribute("disabled");  paper_div.removeAttribute("disabled");  scissors_div.removeAttribute("disabled");
+}
+
+
+function main() {
+  rock_div.addEventListener('click', () => game("r"));
+  paper_div.addEventListener('click', () => game("p"));
+  scissors_div.addEventListener('click', () => game("s"));
+}
+main ();
