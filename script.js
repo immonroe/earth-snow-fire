@@ -17,6 +17,7 @@ function getComputerSelection() {
     const result = Math.floor(Math.random()*3);
     return choices[result]
 } 
+
 //Converts r,p,s => rock, paper, scissors for output on screen
 function convertToWord(letter) {
     if (letter === 'r') return "Rock";
