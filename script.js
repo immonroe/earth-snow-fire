@@ -14,7 +14,7 @@ const scissors_div = document.getElementById("s");
 // Random selected choices from computer
 function getComputerSelection() {
     const choices=['r','p','s'];
-    const result = Math.floor(Math.random()*3);
+    const result = Math.floor(Math.random() * 3)
     return choices[result]
 } 
 
@@ -100,4 +100,4 @@ function main() {
   scissors_div.addEventListener('click', () => game("s"));
 }
 
-main ();
+main();
