@@ -49,7 +49,7 @@ function lose(playerSelection, computerSelection) {
     compScore_span.innerHTML = compScore;
     
     if (compScore<5){result_p.innerHTML = `${convertToWord(computerSelection)} beats ${convertToWord(playerSelection)}. You lose!`;
-    }else if(compScore === 5){
+    } else if (compScore === 5) {
   result_p.innerHTML='Game over, you lose! <button onclick="endGame()">Play Again!</button>'
   rock_div.setAttribute("disabled", 1);
   paper_div.setAttribute("disabled", 1);
