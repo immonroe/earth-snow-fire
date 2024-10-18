@@ -1,9 +1,11 @@
 humanScore = 0
 computerScore = 0
+roundCount = 1
 
 function playGame() {
   for (i = 0; i < 5; i ++) {
     playRound()
+    roundCount ++
     console.log(`Player Score - ${humanScore}`)
     console.log(`Computer Score - ${computerScore}`)
     
@@ -18,7 +20,7 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-  let choice = prompt('Would you like to pick rock, paper, or scissors?')
+  let choice = prompt(`Round ${roundCount} of 5 - Rock, Paper, or Scissors?`)
   return choice.toLowerCase()
 }
 
@@ -28,7 +30,7 @@ function playRound(humanChoice, computerChoice) {
   computerChoice = getComputerChoice()
   
   if (humanChoice === computerChoice) {
-    
+
     console.log("It's a tie!")
     return "It's a tie!";
   }
