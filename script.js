@@ -1,6 +1,15 @@
 humanScore = 0
 computerScore = 0
 
+function playGame() {
+  for (i = 0; i < 5; i ++) {
+    playRound()
+    console.log(`Computer Score - ${computerScore}`)
+    console.log(`Player Score - ${humanScore}`)
+  }
+  
+}
+
 function getComputerChoice() {
   const choices = ['rock', 'paper', 'scissors'];
   const randomIndex = Math.floor(Math.random() * 3);
@@ -17,8 +26,6 @@ function playRound(humanChoice, computerChoice) {
   humanChoice = getHumanChoice()
   computerChoice = getComputerChoice()
   
-  
-  for (let i = 1; i<= 5; i++)
   if (humanChoice === computerChoice) {
     return "It's a tie!";
   }
@@ -52,5 +59,4 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
-
-
+playGame();
