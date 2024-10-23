@@ -1,14 +1,24 @@
+const button = document.querySelectorAll("button")
+button.forEach(button => {
+  button.addEventListener("click", function() {
+    console.log('Button clicked!')
+  })
+})
+
 humanScore = 0
 computerScore = 0
 roundCount = 1
+
+
 
 function playGame() {
   playRound()
   roundCount ++
   console.log(`Player Score - ${humanScore}`)
   console.log(`Computer Score - ${computerScore}`)
-    
 }
+
+
 
 function getComputerChoice() {
   const choices = ['rock', 'paper', 'scissors'];
