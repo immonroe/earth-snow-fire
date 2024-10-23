@@ -3,14 +3,11 @@ computerScore = 0
 roundCount = 1
 
 function playGame() {
-  for (i = 0; i < 5; i ++) {
-    playRound()
-    roundCount ++
-    console.log(`Player Score - ${humanScore}`)
-    console.log(`Computer Score - ${computerScore}`)
+  playRound()
+  roundCount ++
+  console.log(`Player Score - ${humanScore}`)
+  console.log(`Computer Score - ${computerScore}`)
     
-  }
-  
 }
 
 function getComputerChoice() {
@@ -20,7 +17,7 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-  let choice = prompt(`Round ${roundCount} of 5 - Rock, Paper, or Scissors?`)
+  let choice = prompt(`Rock, Paper, or Scissors?`)
   return choice.toLowerCase()
 }
 
