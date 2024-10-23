@@ -3,7 +3,7 @@ let compScore = 0;
 
 const userScore_span = document.getElementById("user-score");
 const compScore_span = document.getElementById("comp-score");
-
+const body = document.querySelector("body")
 const result_p = document.querySelector(".result > p");
 const rock_div = document.getElementById("rock");
 const paper_div = document.getElementById("paper");
@@ -15,7 +15,6 @@ function getComputerSelection() {
     return choices[result];
 } 
 
-// Win function, disables buttons at end of game and shows winning message.
 function win(playerSelection, computerSelection) {
     userScore++;
     userScore_span.innerHTML = userScore;
@@ -82,5 +81,7 @@ function main() {
   paper_div.addEventListener("click", () => game("paper"));
   scissors_div.addEventListener("click", () => game("scissors"));
 }
+
+body.appendChild(result_p)
 
 main();
